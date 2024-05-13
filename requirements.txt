@@ -1,0 +1,4 @@
+Django
+spacy
+tensorflow
+py_vncorenlp
