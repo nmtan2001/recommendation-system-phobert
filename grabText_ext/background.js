@@ -7,6 +7,13 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 var serverhost = 'http://127.0.0.1:8000';
 
+chrome.action.onClicked.addListener(async () => {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const site = tab.site;
+    chrome.action.setBadgeText({ text: site });
+});
+
+
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
 
