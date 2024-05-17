@@ -11,10 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Extract the common prefix
         const commonPrefix = currentUrl.split('/')[2];
         console.log('Common Prefix:', commonPrefix);
-        //tiki
-        if(commonPrefix === 'tiki.vn'){
+        
+        // tiki
+        if (commonPrefix === 'tiki.vn') {
             console.log('tiki');
             document.getElementById('current-common').textContent = commonPrefix;
+
             scrapeTexts.addEventListener('click', async () => {
                 // Get current active tab
                 let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -23,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 var positiveCount = 0;
                 var negativeCount = 0;
 
+                // Mark the start time
+                const startTime = performance.now();
+                
                 // Function to fetch and process reviews for a specific page
                 async function fetchAndProcessReviews(pageNumber) {
                     // Execute script to parse texts on page
@@ -32,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         args: [pageNumber, positiveCount, negativeCount] // Pass the page number and counts to the function
                     });
                     console.log('pos:', resultArray[0].result.positive, 'neg:', resultArray[0].result.negative);
-                    // console.log(positiveCount, negativeCount)
                     // Update overall sentiment display
                     updateOverallSentiment(resultArray[0].result);
                 }
@@ -66,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             // Get the content after potential expansion
                             content = contentElement.textContent.trim();
                             if (content == "") {
-                                console.log('skipped')
+                                console.log('skipped');
                                 continue;
                             }
                             // Remove "Thu gọn" if it exists
@@ -104,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
 
-
                 // Function to update overall sentiment display
                 function updateOverallSentiment(result) {
                     // Determine the overall sentiment
@@ -114,13 +117,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     overallSentiment.textContent = overallSentimentUpdate;
                     positiveNum.textContent = result.positive;
                     negativeNum.textContent = result.negative;
+
+                    // Mark the end time
+                    const endTime = performance.now();
+                    const duration = endTime - startTime;
+                    console.log(`Script execution time: ${duration} milliseconds`);
                 }
 
                 // Start fetching and processing reviews from the first page
                 fetchAndProcessReviews(1);
             });
-        }
-        else{
+        } else {
             document.getElementById('current-common').textContent = 'Currently not supported';
         }
     });
