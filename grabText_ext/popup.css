@@ -1,7 +1,103 @@
 body {
-    min-width: 300px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f9;
 }
 
-.center {
-    text-align: center;
+.container {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px;
+  max-width: 100%;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+#overallSentiment {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+#scrapeTexts {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+#scrapeTexts:hover {
+  background-color: #45a049;
+}
+
+#sentimentResult {
+  margin-top: 1.5rem;
+}
+
+h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.sentimentCounts {
+  display: flex;
+  justify-content: space-between;
+}
+
+.positive,
+.negative {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 48%;
+  text-align: center;
+}
+
+.positive {
+  color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.negative {
+  color: #f44336;
+  background-color: #ffebee;
+}
+
+p {
+  margin: 0;
+}
+
+.trademark {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
 }

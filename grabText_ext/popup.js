@@ -112,6 +112,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Total Positive:', result.positive, 'Total Negative:', result.negative);
                     console.log('Overall Sentiment:', overallSentimentUpdate);
                     overallSentiment.textContent = overallSentimentUpdate;
+                    positiveNum.textContent = result.positive;
+                    negativeNum.textContent = result.negative;
                 }
 
                 // Start fetching and processing reviews from the first page
