@@ -22,7 +22,6 @@ chrome.runtime.onMessage.addListener(
 
         console.log(url);
 
-        //var url = "http://127.0.0.1:8000/wiki/get_wiki_summary/?topic=%22COVID19%22"	
         fetch(url)
             .then(response => response.json())
             .then(response => sendResponse({ farewell: response }))

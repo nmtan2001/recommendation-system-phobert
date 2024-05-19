@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Phone helper",
-    "description": "Recommend buying phones based on the comments",
+    "name": "Recommendation system",
+    "description": "Recommend products based on the emotion of reviews",
     "version": "1.0.0",
     "background": {
         "service_worker": "background.js"

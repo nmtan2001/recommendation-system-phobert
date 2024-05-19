@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         var content = "";
 
                         if (contentElement) {
-                            // Check if there is a "Xem thêm" button
+                            // Check if there is a "show more" button
                             var showMoreButton = contentElement.querySelector('.show-more-content');
                             if (showMoreButton) {
-                                // Simulate a click event on the "Xem thêm" button to reveal the full content
+                                // Simulate a click event on the "show more" button to reveal the full content
                                 showMoreButton.click();
                                 // Wait for a short delay for the content to expand
                                 await new Promise(resolve => setTimeout(resolve, 1000));
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Function to update overall sentiment display
                 function updateOverallSentiment(result) {
                     // Determine the overall sentiment
-                    var overallSentimentUpdate = (result.positive > result.negative) ? "Positive" : "Negative";
+                    var overallSentimentUpdate = (result.positive > result.negative) ? "Reviews are positive! Product recommended!" : "Reviews are negative! Product not recommended!";
                     console.log('Total Positive:', result.positive, 'Total Negative:', result.negative);
                     console.log('Overall Sentiment:', overallSentimentUpdate);
                     overallSentiment.textContent = overallSentimentUpdate;

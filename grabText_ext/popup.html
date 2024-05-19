@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sentiment Analysis</title>
+    <title>Emotion Analysis</title>
     <link rel="stylesheet" href="popup.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -15,18 +15,18 @@
 
   <body>
     <div class="container">
-      <h1>Sentiment Analysis</h1>
+      <h1>Product Recommendation System</h1>
       <h2 id="current-common"></h2>
       <h2 id="overallSentiment"></h2>
-      <button id="scrapeTexts">Analyze Sentiment</button>
+      <button id="scrapeTexts">Analyze emotion of reviews</button>
       <div id="sentimentResult">
-        <h3>Sentiment Results:</h3>
+        <h3>Emotion Results:</h3>
         <div class="sentimentCounts">
           <p id="positiveCount" class="positive">
-            Positive: <span id="positiveNum"></span>
+            Positive reviews: <span id="positiveNum"></span>
           </p>
           <p id="negativeCount" class="negative">
-            Negative: <span id="negativeNum"></span>
+            Negative reviews: <span id="negativeNum"></span>
           </p>
         </div>
       </div>
