@@ -64,7 +64,7 @@ def clean_text(text):
         ':))': ' tích cực ', ':)': ' tích cực ',  '><': ' tích cực ', ':>' : ' tích cực ',
         #Chuẩn hóa 1 số sentiment words/English words
         #okay
-        ' ô kêi ': ' ok ', 'okie': ' ok ', ' o kê ': ' ok ', ' okey ': ' ok ', ' ôkê ': ' ok ', ' oki ': ' ok ', ' oke ':  ' ok ',' okay ':' ok ',' okê ':' ok ',
+        ' ô kêi ': ' ok ', 'okie': ' ok ', ' o kê': ' ok ', ' okey ': ' ok ', ' ôkê ': ' ok ', ' oki ': ' ok ', ' oke ':  ' ok ',' okay ':' ok ',' okê ':' ok ',
         #cám ơn
         ' tks ': ' cám ơn ', ' thks ': ' cám ơn ', ' thanks ': ' cám ơn ', ' ths ': ' cám ơn ', ' thank ': ' cám ơn ',  'thask' : 'cám ơn',
         #tôi
@@ -74,18 +74,14 @@ def clean_text(text):
         ,' kp ': ' không phải ', ' kphai ' : 'không phải',' kô ': ' không ', 'ko' : ' không ',' ko ': ' không ', 'khong': ' không ',
         #được
         ' đx ': ' được ', 'đx': ' được ',' dk ': ' được ','dk': ' được ', ' dc ': ' được ', 'dc': ' được ', ' đk ': ' được ','đk': ' được ', 'đc' : 'được', ' đc ': ' được ',
-        #curse words
-         'buoi' : ' tiêu cực', 'buồi' : ' tiêu cực ', 'lồn' : ' tiêu cực',  'loz' : ' tiêu cực ', 'lol': ' tiêu cực ',
-         ' cc ': ' tiêu cực ',  'dm' : ' tiêu cực ',' kẹc ' : 'tiêu cực', 'cặc' : ' tiêu cực ', 'đéo' : ' tiêu cực', 
-         'cmm' : ' tiêu cực', 
-         'đm' : ' tiêu cực ', ' cức' : ' tiêu cực ',  'đmm' : ' tiêu cực ', 'dm' : ' tiêu cực ', 'dmm' : ' tiêu cực ',
         #cười/slangs
-        ' he he ': ' tích cực ','hehe': ' tích cực ','hihi': ' tích cực ', 'haha': ' tích cực ', 'hjhj': ' tích cực ', 'kkk' :' tích cực ', 'cute': ' dễ thương ',
-        'huh': ' tiêu cực ', ' vs ': ' với ', 'wa': ' quá ', 'wá': ' quá', ' j ': ' gì ', '“': ' ', ' iu ' : 'yêu',  ' thick ': ' thích ', 'sấ': ' xấu ', 'qá': ' quá ' , ' tot ': ' tốt ',
+        ' he he ': ' tích cực ','hehe': ' tích cực ','hihi': ' tích cực ', 'haha': ' tích cực ', 'hjhj': ' tích cực ', 'kkk' :' tích cực ', 'loz' : ' tiêu cực '
+        , 'lol': ' tiêu cực ',' cc ': ' tiêu cực ', 'cute': ' dễ thương ','huh': ' tiêu cực ', 'buoi' : ' tiêu cực ',' kẹc ' : ' tiêu cực ', 'nma' : ' nhưng mà ',
+        ' vs ': ' với ', 'wa': ' quá ', 'wá': ' quá', ' j ': ' gì ', '“': ' ', ' iu ' : 'yêu',  ' thick ': ' thích ', 'sấ': ' xấu ', 'qá': ' quá ' , ' tot ': ' tốt ',
         'bt': ' bình thường ', 'hnao' : 'hôm nào',  'hnay' : 'hôm nay', 'đthoai' : 'điện thoại', ' tl ': ' trả lời ', ' r ': ' rồi ',' nt ': ' nhắn tin ',' tl ': ' trả lời '
-        ,' sài ': ' xài ','bjo':' bao giờ ','dep': ' đẹp ',' xau ': ' xấu ','hàg': ' hàng ', 'qủa': ' quả ', '%': ' phần trăm ',
+        ,' sài ': ' xài ','bjo':' bao giờ ','dep': ' đẹp ',' xau ': ' xấu ','hàg': ' hàng ', 'qủa': ' quả ', '%': ' phần trăm ', 'ns' : 'nói', 'ms' : 'mới',
          'hqa': ' hôm qua ', 'mn' : 'mọi người', 'ròi' : 'rồi', 'mng' : 'mọi người', 'ròy': ' rồi ', 'hk': ' không ', 'trl': 'trả lời', 'ns' : ' nói ', 'chs' : 'chơi', 'ptrăm' : 'phần trăm',
-        ' s ': ' sao ', ' tuột ': ' tụt ', 'nv': ' nhân viên ', 'ad' : 'nhân viên', 'ads' : 'nhân viên', 'mún': ' muốn ', 'cx' : 'cũng', 'nge' : ' nghe ',
+        ' s ': ' sao ', ' tuột ': ' tụt ', 'nv': ' nhân viên ', 'ad' : 'nhân viên', 'ads' : 'nhân viên', 'mún': ' muốn ', 'cx' : 'cũng', 'nge' : ' nghe ', 'toẹt': ' tuyệt ',
         #english words
         ' sz ': ' cỡ ', 'size': ' cỡ ', ' luv ' :'yêu' , 'love' : 'yêu ', ' wow ' : 'tuyệt vời', ' woah ' : 'tuyện vời',
         'authentic': ' chuẩn chính hãng ',' aut ': ' chuẩn chính hãng ', ' auth ': ' chuẩn chính hãng ', ' store ': ' cửa hàng ',
@@ -109,19 +105,22 @@ def clean_text(text):
 
     for k, v in replace_list.items():
       text = text.replace(k, v)
-    text = re.sub(r'(\d+)p', r'\1 phút', text) #replace minute
-    text = re.sub(r'(\d+)p', r'\1 phút', text) #replace percentage
+    text = re.sub(r'(\d+)p ', r'\1 phút ', text) #replace minute
+    text = re.sub(r'(\d+)pt ', r'\1 phần trăm ', text) #replace percentage
+    text = re.sub(r't(\d+)', r'thứ \1 ', text) #replace minute
+    text = re.sub(r'(\d+)h', r'\1 giờ', text) #replace percentage
+    text = re.sub(r'(\d+)k', r'\1 nghìn đồng', text) #replace money
+    text = re.sub(r'(\d+)tr', r'\1 triệu đồng', text) #replace money
     text = re.sub(r'([a-z]+?)\1+',r'\1', text) #Reduces consecutive repeating characters to a single character.
-    text = re.sub(r"(\w)\s*([" + string.punctuation + "])\s*(\w)", r"\1 \2 \3", text) # Adds spaces around punctuation marks if they are surrounded by word characters.
-    text = re.sub(r"(\w)\s*([" + string.punctuation + "])", r"\1 \2", text) #Adds spaces around punctuation marks if they are followed by word characters.
-    # text = re.sub(r"(\d)([^\d.])", r"\1 \2", text)
-    # text = re.sub(r"([^\d.])(\d)", r"\1 \2", text)
-    text = re.sub(f"([{string.punctuation}])([{string.punctuation}])+",r"\1", text) # Remove repeated consecutive punctuation marks
-    text = text.strip() # Remove leading and trailing whitespaces
-    #While loops to remove leading and trailing punctuation and whitespace characters.
-    while text.endswith(tuple(string.punctuation+string.whitespace)):
+    text = re.sub(r"(\w)\s*([{}])\s*(\w)".format(re.escape(string.punctuation)), r"\1 \3", text)  # Removes punctuation after word characters
+    text = re.sub(r"(\w)([" + string.punctuation + "])", r"\1", text)  # Removes punctuation after word characters
+    text = re.sub(f"([{string.punctuation}])([{string.punctuation}])+", r"\1", text)  # Remove repeated consecutive punctuation marks
+    text = text.strip()  # Remove leading and trailing whitespaces
+    # While loops to remove leading and trailing punctuation and whitespace characters.
+    while text.endswith(tuple(string.punctuation + string.whitespace)):
         text = text[:-1]
-    while text.startswith(tuple(string.punctuation+string.whitespace)):
+    while text.startswith(tuple(string.punctuation + string.whitespace)):
         text = text[1:]
-    text = re.sub(r"\s+", " ", text) # Replace multiple consecutive whitespaces with a single space
+    text = re.sub(r"\s+", " ", text)  # Replace multiple consecutive whitespaces with a single space
+
     return text
