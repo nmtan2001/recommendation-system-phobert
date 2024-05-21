@@ -25,7 +25,7 @@ from text_processing import word_segmentation, clean_text
 device = "cpu"
 
 # Define the model name/path
-model_name = "phobert_sentiment_analysis"
+model_name = "phobert_sentiment_analysis_new"
 
 # Load the model
 model = RobertaForSequenceClassification.from_pretrained(model_name)
@@ -58,11 +58,16 @@ def predict_sentiment(model, tokenizer, text):
 
     return predicted_class
 
-# Example usage
-while True:
     # raw_text = "Thời tiết rất đẹp"
-    raw_text = input("Enter a text (type 'quit()' to exit): ")
-    if raw_text.lower() == 'quit()':
-        break
     predicted_sentiment = predict_sentiment(model, tokenizer, raw_text)
     print("Predicted sentiment:", "Positive" if predicted_sentiment == 1 else "Negative")
+
+
+# # Example usage
+# while True:
+#     # raw_text = "Thời tiết rất đẹp"
+#     raw_text = input("Enter a text (type 'quit()' to exit): ")
+#     if raw_text.lower() == 'quit()':
+#         break
+#     predicted_sentiment = predict_sentiment(model, tokenizer, raw_text)
+#     print("Predicted sentiment:", "Positive" if predicted_sentiment == 1 else "Negative")
