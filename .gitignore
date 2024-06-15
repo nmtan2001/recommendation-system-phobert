@@ -5,4 +5,5 @@ PhoBERT_92_full.ipynb
 PhoBERT_UIT_no_preprocessing.ipynb
 PhoBERT_UIT_preprocessing.ipynb
 models_out/
-testext/
+testext/    
+note_docker.txt
