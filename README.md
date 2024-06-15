@@ -21,7 +21,7 @@ The rise of e-commerce in Vietnam presents a unique opportunity to improve custo
 
 ## Features
 
-- **Sentiment Analysis**: Analyze the sentiment of Vietnamese texts using BERT.
+- **Sentiment Analysis**: Analyze the sentiment of Vietnamese texts using PhoBERT, a pre-trained BERT specialized in Vietnamese.
 - **Personalized Recommendations**: Provide product recommendations based on the analyzed sentiment.
 - **User-Friendly Interface**: Chrome browser extension for seamless user interaction.
 - **Backend Integration**: Django-based backend server for handling recommendation logic and data processing.
@@ -38,8 +38,8 @@ The rise of e-commerce in Vietnam presents a unique opportunity to improve custo
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/sentiment-recommender-vietnamese.git
-   cd sentiment-recommender-vietnamese
+   git clone https://github.com/nmtan2001/recommendation-system-phobert
+   cd recommendation-system-phobert
    ```
 
 2. Create a virtual environment and activate it:
@@ -55,7 +55,7 @@ The rise of e-commerce in Vietnam presents a unique opportunity to improve custo
 
 4. Set up the Django backend:
    ```sh
-   cd backend
+   cd mysite
    python manage.py migrate
    python manage.py runserver
    ```
@@ -69,7 +69,7 @@ The rise of e-commerce in Vietnam presents a unique opportunity to improve custo
 
 1. Start the Django server:
    ```sh
-   cd backend
+   cd mysite
    python manage.py runserver
    ```
 
@@ -80,22 +80,17 @@ The rise of e-commerce in Vietnam presents a unique opportunity to improve custo
 ## Project Structure
 
 ```plaintext
-sentiment-recommender-vietnamese/
-├── backend/
+recommendation-system-phobert/
+├── mysite/
 │   ├── manage.py
-│   ├── recommender/
-│   ├── templates/
+│   ├── VNCoreNLP/
+│   ├── analysis/
 │   └── ...
-├── chrome_extension/
+├── grabText_ext/
 │   ├── manifest.json
 │   ├── background.js
 │   └── ...
-├── data/
-│   └── ...
-├── models/
-│   └── ...
-├── notebooks/
-│   └── ...
+├── Dockerfile
 ├── requirements.txt
 └── README.md
 ```
@@ -104,7 +99,7 @@ sentiment-recommender-vietnamese/
 
 1. **Data Collection**: Gather datasets from the internet, including production practice and scientific research materials.
 2. **Data Preprocessing**: Standardize and tokenize Vietnamese texts, handle punctuation and emojis, and perform text segmentation.
-3. **Model Training**: Use BERT and other machine learning models like SVM for sentiment analysis.
+3. **Model Training**: Use PhoBERT and other machine learning models like SVM and Naive Bayes for sentiment analysis.
 4. **Recommendation Algorithm**: Develop algorithms to provide personalized recommendations based on sentiment analysis results.
 5. **System Development**: Implement the recommendation system using a Django backend and a Chrome browser extension.
 
